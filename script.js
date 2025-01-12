@@ -1,6 +1,24 @@
-// Set the event date to January 18th, 2024 at 9:00 AM
-const eventDate = new Date('2024-01-18T09:00:00').getTime();
-let timer; // Declare timer in global scope
+// Set the event date to January 18th, 2025 at 9:00 AM
+const eventDate = new Date('2025-01-18T09:00:00').getTime();
+let timer;
+
+function animateValue(element, start, end, duration) {
+    const range = end - start;
+    const increment = range / (duration / 16); // 60fps
+    let current = start;
+    
+    const animate = () => {
+        current += increment;
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+            element.textContent = String(Math.abs(Math.floor(end))).padStart(2, '0');
+            return;
+        }
+        element.textContent = String(Math.abs(Math.floor(current))).padStart(2, '0');
+        requestAnimationFrame(animate);
+    };
+    
+    animate();
+}
 
 function updateCountdown() {
     const now = new Date().getTime();
@@ -12,13 +30,25 @@ function updateCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    console.log('Updating countdown:', days, hours, minutes, seconds); // Debug log
+    // Get current values
+    const currentDays = parseInt(document.getElementById('days').textContent) || 0;
+    const currentHours = parseInt(document.getElementById('hours').textContent) || 0;
+    const currentMinutes = parseInt(document.getElementById('minutes').textContent) || 0;
+    const currentSeconds = parseInt(document.getElementById('seconds').textContent) || 0;
 
-    // Update the HTML elements
-    document.getElementById('days').textContent = String(days).padStart(2, '0');
-    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    // Animate each value if it's different
+    if (currentDays !== days) {
+        animateValue(document.getElementById('days'), currentDays, days, 500);
+    }
+    if (currentHours !== hours) {
+        animateValue(document.getElementById('hours'), currentHours, hours, 500);
+    }
+    if (currentMinutes !== minutes) {
+        animateValue(document.getElementById('minutes'), currentMinutes, minutes, 500);
+    }
+    if (currentSeconds !== seconds) {
+        animateValue(document.getElementById('seconds'), currentSeconds, seconds, 500);
+    }
 
     if (distance < 0) {
         clearInterval(timer);
@@ -28,18 +58,16 @@ function updateCountdown() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded'); // Debug log
-
     // Add status element
     const statusElement = document.createElement('p');
     statusElement.className = 'event-status';
-    statusElement.textContent = 'Event starts on January 18th at 9:00 AM';
+    statusElement.textContent = 'Event starts on January 18th, 2025 at 9:00 AM';
     const countdown = document.getElementById('countdown');
     countdown.parentNode.insertBefore(statusElement, countdown);
 
     // Start the countdown
     updateCountdown();
-    timer = setInterval(updateCountdown, 1000); // Assign to global timer variable
+    timer = setInterval(updateCountdown, 1000);
 
     // Handle form submission
     const form = document.getElementById('registrationForm');

@@ -149,6 +149,29 @@ h1::before {
     text-shadow: 0 0 10px var(--primary-color),
                  0 0 20px var(--primary-color);
     display: block;
+    transition: all 0.3s ease-out;
+}
+
+.countdown span.updating {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px var(--primary-color),
+                 0 0 30px var(--primary-color),
+                 0 0 40px var(--primary-color);
+}
+
+@keyframes numberChange {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.countdown span.changing {
+    animation: numberChange 0.5s ease-out;
 }
 
 .countdown label {
