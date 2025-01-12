@@ -4,7 +4,7 @@ let timer;
 
 function animateValue(element, start, end, duration) {
     const range = end - start;
-    const increment = range / (duration / 16); // 60fps
+    const increment = range / (duration / 16); 
     let current = start;
     
     const animate = () => {
@@ -65,11 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const countdown = document.getElementById('countdown');
     countdown.parentNode.insertBefore(statusElement, countdown);
 
-    // Start the countdown
+    
     updateCountdown();
     timer = setInterval(updateCountdown, 1000);
 
-    // Handle form submission
+    
     const form = document.getElementById('registrationForm');
     const successMessage = document.getElementById('successMessage');
 

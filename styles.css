@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #0ff;     /* Cyan */
-    --secondary-color: #f0f;   /* Magenta */
-    --accent-color: #ff0;      /* Yellow */
+    --primary-color: #0ff;     
+    --secondary-color: #f0f;   
+    --accent-color: #ff0;      
     --dark-bg: #0a0a0a;
     --darker-bg: #050505;
     --text-color: #fff;
