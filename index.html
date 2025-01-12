@@ -81,33 +81,34 @@
 
         <section class="registration-form">
             <h2><i class="fas fa-edit"></i> Register Your Team</h2>
-            <form id="registrationForm">
+            <form id="registrationForm" name="event-registration" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="event-registration">
                 <div class="form-group">
                     <label for="teamName">Team Name</label>
-                    <input type="text" id="teamName" required>
+                    <input type="text" id="teamName" name="teamName" required>
                 </div>
-                
+
                 <div class="team-members">
                     <h3>Team Members</h3>
                     <div class="form-group">
                         <label for="member1">Member 1 (Team Leader)</label>
-                        <input type="text" id="member1" required>
-                        <input type="email" id="email1" placeholder="Email" required>
+                        <input type="text" id="member1" name="member1" required>
+                        <input type="email" id="email1" name="email1" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <label for="member2">Member 2</label>
-                        <input type="text" id="member2" required>
-                        <input type="email" id="email2" placeholder="Email" required>
+                        <input type="text" id="member2" name="member2" required>
+                        <input type="email" id="email2" name="email2" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <label for="member3">Member 3</label>
-                        <input type="text" id="member3" required>
-                        <input type="email" id="email3" placeholder="Email" required>
+                        <input type="text" id="member3" name="member3" required>
+                        <input type="email" id="email3" name="email3" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <label for="member4">Member 4</label>
-                        <input type="text" id="member4" required>
-                        <input type="email" id="email4" placeholder="Email" required>
+                        <input type="text" id="member4" name="member4" required>
+                        <input type="email" id="email4" name="email4" placeholder="Email" required>
                     </div>
                 </div>
 
@@ -126,4 +127,4 @@
     <script src="script.js"></script>
     <script src="particles.js"></script>
 </body>
-</html> 
+</html>
