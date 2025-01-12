@@ -1,23 +1,37 @@
 // event - date timer
-const eventDate = new Date('2025-01-18T09:00:00').getTime();
+const eventDate = new Date('2025-01-18T00:00:00').getTime();
 let timer;
 
 function animateValue(element, start, end, duration) {
-    const range = end - start;
-    const increment = range / (duration / 16); 
-    let current = start;
+    element.classList.add('changing');
+    element.setAttribute('data-value', element.textContent);
     
-    const animate = () => {
-        current += increment;
-        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+    let iterations = 0;
+    const maxIterations = 5;
+    const chars = '0123456789';
+    
+    const glitchEffect = setInterval(() => {
+        if (iterations >= maxIterations) {
+            clearInterval(glitchEffect);
             element.textContent = String(Math.abs(Math.floor(end))).padStart(2, '0');
+            element.setAttribute('data-value', element.textContent);
+            
+            setTimeout(() => {
+                element.classList.remove('changing');
+            }, 100);
             return;
         }
-        element.textContent = String(Math.abs(Math.floor(current))).padStart(2, '0');
-        requestAnimationFrame(animate);
-    };
-    
-    animate();
+        
+        // Create matrix-like random number effect
+        let randomNum = '';
+        for (let i = 0; i < 2; i++) {
+            randomNum += chars[Math.floor(Math.random() * chars.length)];
+        }
+        element.textContent = randomNum;
+        element.setAttribute('data-value', randomNum);
+        
+        iterations++;
+    }, 60);
 }
 
 function updateCountdown() {

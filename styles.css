@@ -76,6 +76,7 @@ h1 {
     animation: flicker 2s infinite alternate;
     width: 100%;
     text-align: center;
+    animation: titlePulse 2s infinite alternate;
 }
 
 h1::before {
@@ -139,38 +140,124 @@ h1::before {
     border: 1px solid var(--primary-color);
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2),
                 inset 0 0 30px rgba(0, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.countdown div:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.3),
+        inset 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.countdown div::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(0, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: sweep 3s linear infinite;
+}
+
+@keyframes sweep {
+    0% {
+        transform: rotate(45deg) translateX(-100%);
+    }
+    100% {
+        transform: rotate(45deg) translateX(100%);
+    }
 }
 
 .countdown span {
     font-size: 3.5rem;
     font-weight: 700;
     color: var(--primary-color);
-    text-shadow: 0 0 10px var(--primary-color),
-                 0 0 20px var(--primary-color);
-    display: block;
-    transition: all 0.3s ease-out;
+    display: inline-block;
+    position: relative;
+    font-family: 'Rajdhani', monospace;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--primary-color);
 }
 
-.countdown span.updating {
-    transform: scale(1.1);
-    text-shadow: 0 0 20px var(--primary-color),
-                 0 0 30px var(--primary-color),
-                 0 0 40px var(--primary-color);
+.countdown span::before {
+    content: attr(data-value);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: hologramShine 3s linear infinite;
+    z-index: 1;
 }
 
-@keyframes numberChange {
+.countdown span.changing {
+    animation: matrixChange 0.5s ease-out;
+}
+
+@keyframes matrixChange {
     0% {
-        transform: translateY(20px);
-        opacity: 0;
+        text-shadow: 
+            0 0 10px var(--primary-color),
+            0 0 20px var(--primary-color);
+        opacity: 1;
+    }
+    15% {
+        text-shadow: 
+            2px 0 1px rgba(0, 255, 255, 0.9),
+            -2px 0 1px rgba(255, 0, 255, 0.9),
+            0 0 30px var(--primary-color);
+        opacity: 0.8;
+    }
+    30% {
+        text-shadow: 
+            -2px 0 1px rgba(0, 255, 255, 0.9),
+            2px 0 1px rgba(255, 0, 255, 0.9),
+            0 0 40px var(--primary-color);
+        opacity: 0.9;
     }
     100% {
-        transform: translateY(0);
+        text-shadow: 
+            0 0 10px var(--primary-color),
+            0 0 20px var(--primary-color),
+            0 0 30px var(--primary-color);
         opacity: 1;
     }
 }
 
-.countdown span.changing {
-    animation: numberChange 0.5s ease-out;
+@keyframes hologramShine {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
 }
 
 .countdown label {
@@ -935,5 +1022,44 @@ footer::before {
     h1 {
         font-size: 2rem;
         letter-spacing: 3px;
+    }
+} 
+
+/* Add a scanline effect to the countdown container */
+.countdown::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0%,
+        rgba(0, 255, 255, 0.05) 0.5px,
+        transparent 1px
+    );
+    pointer-events: none;
+    animation: scan 10s linear infinite;
+}
+
+@keyframes scan {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 100%;
+    }
+} 
+
+@keyframes titlePulse {
+    from {
+        text-shadow: 0 0 10px var(--primary-color),
+                     0 0 20px var(--primary-color);
+    }
+    to {
+        text-shadow: 0 0 15px var(--primary-color),
+                     0 0 30px var(--primary-color),
+                     0 0 40px var(--primary-color);
     }
 } 
