@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Snatch - NST-SDC Event Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="referrer" content="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hero">
+        <div class="glowing-overlay"></div>
+        <div class="container">
+            <div class="club-brand">
+                <span class="club-name">NST-SDC</span>
+                <span class="club-line"></span>
+                <span class="club-subtitle">Student Developers Club</span>
+            </div>
+            <h1 data-text="QUICK SNATCH">QUICK SNATCH</h1>
+            <p class="tagline">An exciting campus-wide team challenge</p>
+            <div id="countdown" class="countdown">
+                <div>
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div>
+                    <span id="hours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div>
+                    <span id="minutes">00</span>
+                    <label>Minutes</label>
+                </div>
+                <div>
+                    <span id="seconds">00</span>
+                    <label>Seconds</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="event-overview">
+            <h2><i class="fas fa-info-circle"></i> Ready for the Ultimate Tech Hunt?</h2>
+            <p>🚀 Join an adrenaline-pumping race across campus! Crack codes, solve puzzles, and conquer five challenging checkpoints. Your wit, speed, and teamwork could lead you to glory! Are you ready to prove you're the best?</p>
+        </section>
+
+        <section class="event-structure">
+            <h2><i class="fas fa-sitemap"></i> Event Structure</h2>
+            <div class="structure-grid">
+                <div class="structure-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Team Dynamics</h3>
+                    <p>One member must be stationed in the classroom while another tackles outdoor challenges. Roles can be switched during the event.</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-flag-checkered"></i>
+                    <h3>Checkpoints</h3>
+                    <p>Solve problems to receive hints, collaborate with teammates, and progress through five exciting checkpoints.</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Victory</h3>
+                    <p>The team with the highest points and fastest completion time wins the challenge!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="rules">
+            <h2><i class="fas fa-gavel"></i> Rules and Regulations</h2>
+            <ul>
+                <li>Maintain classroom presence at all times</li>
+                <li>Each member must solve at least one checkpoint challenge</li>
+                <li>Points awarded for successful checkpoint completion</li>
+                <li>Team switching allowed between roles</li>
+                <li>Fair play and collaboration is essential</li>
+            </ul>
+        </section>
+
+        <section class="registration-form">
+            <h2><i class="fas fa-edit"></i> Register Your Team</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="teamName">Team Name</label>
+                    <input type="text" id="teamName" required>
+                </div>
+                
+                <div class="team-members">
+                    <h3>Team Members</h3>
+                    <div class="form-group">
+                        <label for="member1">Member 1 (Team Leader)</label>
+                        <input type="text" id="member1" required>
+                        <input type="email" id="email1" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="member2">Member 2</label>
+                        <input type="text" id="member2" required>
+                        <input type="email" id="email2" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="member3">Member 3</label>
+                        <input type="text" id="member3" required>
+                        <input type="email" id="email3" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="member4">Member 4</label>
+                        <input type="text" id="member4" required>
+                        <input type="email" id="email4" placeholder="Email" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Register Team</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 NST-SDC. All rights reserved.</p>
+            <p class="creator-credit">Crafted by <span class="creator-name">Daksh</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="particles.js"></script>
+</body>
+</html> 
