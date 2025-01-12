@@ -1,4 +1,4 @@
-// Set the event date to January 18th, 2025 at 9:00 AM
+// event - date timer
 const eventDate = new Date('2025-01-18T09:00:00').getTime();
 let timer;
 
@@ -24,19 +24,19 @@ function updateCountdown() {
     const now = new Date().getTime();
     const distance = eventDate - now;
 
-    // Calculate time units
+    
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Get current values
+    
     const currentDays = parseInt(document.getElementById('days').textContent) || 0;
     const currentHours = parseInt(document.getElementById('hours').textContent) || 0;
     const currentMinutes = parseInt(document.getElementById('minutes').textContent) || 0;
     const currentSeconds = parseInt(document.getElementById('seconds').textContent) || 0;
 
-    // Animate each value if it's different
+    
     if (currentDays !== days) {
         animateValue(document.getElementById('days'), currentDays, days, 500);
     }
@@ -56,9 +56,9 @@ function updateCountdown() {
     }
 }
 
-// Initialize everything when DOM is loaded
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Add status element
+    
     const statusElement = document.createElement('p');
     statusElement.className = 'event-status';
     statusElement.textContent = 'Event starts on January 18th, 2025 at 9:00 AM';
