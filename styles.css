@@ -860,3 +860,7 @@ footer::before {
 @keyframes floatLogo {
     display: none;
 } 
+
+.hidden {
+    display: none !important;
+} 
