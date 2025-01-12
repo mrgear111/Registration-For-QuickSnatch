@@ -114,6 +114,10 @@
 
                 <button type="submit" class="submit-btn">Register Team</button>
             </form>
+
+            <div id="successMessage" class="success-message" style="display: none;">
+                <p>Thank you for registering! We look forward to seeing you at the event.</p>
+            </div>
         </section>
     </main>
 
@@ -124,7 +128,19 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="particles.js"></script>
+    <script>
+        const form = document.getElementById('registrationForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Display success message
+            successMessage.style.display = 'block';
+
+            // Optionally clear form fields after submission
+            form.reset();
+        });
+    </script>
 </body>
 </html>
