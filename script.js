@@ -1,5 +1,5 @@
 // event - date timer
-const eventDate = new Date('2025-01-18T00:00:00').getTime();
+const eventDate = new Date('2025-01-18T09:00:00').getTime();
 let timer;
 
 function animateValue(element, start, end, duration) {

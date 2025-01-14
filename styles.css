@@ -385,6 +385,15 @@ main {
 .form-group {
     position: relative;
     margin-bottom: 2rem;
+    margin-right: -3rem;
+}
+
+.form-group:first-of-type {
+    margin-right: 0;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .form-group label {
@@ -397,7 +406,7 @@ main {
 }
 
 input {
-    width: 100%;
+    width: 90%;
     padding: 1rem 1.5rem;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid var(--primary-color);
@@ -422,6 +431,7 @@ input:focus {
     gap: 2rem;
     background: rgba(0, 0, 0, 0.2);
     padding: 2rem;
+    padding-right: 5rem;
     border-radius: 15px;
     margin: 2rem 0;
     border: 1px solid rgba(0, 255, 255, 0.1);
@@ -553,6 +563,7 @@ footer::before {
     position: relative;
     padding: 0 10px;
     font-size: 1.6rem;
+    text-decoration: none;
 }
 
 .creator-name::before {
@@ -1062,4 +1073,10 @@ footer::before {
                      0 0 30px var(--primary-color),
                      0 0 40px var(--primary-color);
     }
+} 
+
+/* Make team name input full width */
+#teamName {
+    width: 100%;
+    box-sizing: border-box;
 } 
