@@ -1,5 +1,7 @@
-// event - date timer
-const eventDate = new Date('2025-01-18T09:00:00').getTime();
+// Calculate a date that's 4 days, 5 hours, and 3 minutes from now
+const now = new Date();
+const targetDate = new Date(now.getTime() + (4 * 24 * 60 * 60 * 1000) + (5 * 60 * 60 * 1000) + (3 * 60 * 1000));
+const eventDate = targetDate.getTime();
 let timer;
 
 function animateValue(element, start, end, duration) {
@@ -70,12 +72,97 @@ function updateCountdown() {
     }
 }
 
+// Add this function to create interactive particles
+function createParticleEffect() {
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '1';
+    canvas.style.opacity = '0.5';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouseX = 0;
+    let mouseY = 0;
+
+    // Resize canvas
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Track mouse movement
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        // Create particles on mouse move
+        for(let i = 0; i < 2; i++) {
+            particles.push(createParticle(mouseX, mouseY));
+        }
+    });
+
+    function createParticle(x, y) {
+        return {
+            x: x,
+            y: y,
+            vx: (Math.random() - 0.5) * 2,
+            vy: (Math.random() - 0.5) * 2,
+            life: 1,
+            color: Math.random() > 0.5 ? '#0ff' : '#f0f'
+        };
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles = particles.filter(p => p.life > 0);
+
+        particles.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.life -= 0.01;
+            
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.life;
+            ctx.fill();
+            
+            // Add connecting lines between nearby particles
+            particles.forEach(p2 => {
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                
+                if(dist < 100) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.strokeStyle = p.color;
+                    ctx.globalAlpha = (100 - dist) / 100 * p.life * 0.5;
+                    ctx.stroke();
+                }
+            });
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     
     const statusElement = document.createElement('p');
     statusElement.className = 'event-status';
-    statusElement.textContent = 'Event starts on January 18th, 2025 at 9:00 AM';
+    statusElement.textContent = 'Event starts on January 19th, 2025 at 9:00 AM';
     const countdown = document.getElementById('countdown');
     countdown.parentNode.insertBefore(statusElement, countdown);
 
@@ -101,4 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch((error) => alert(error));
     });
+
+    // Add this to your existing DOMContentLoaded event listener
+    createParticleEffect();
 }); 
