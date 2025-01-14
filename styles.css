@@ -73,10 +73,9 @@ h1 {
     letter-spacing: 15px;
     position: relative;
     text-shadow: var(--neon-shadow);
-    animation: flicker 2s infinite alternate;
     width: 100%;
     text-align: center;
-    animation: titlePulse 2s infinite alternate;
+    animation: flicker 2s infinite alternate, glitchText 4s infinite;
 }
 
 h1::before {
@@ -1079,4 +1078,28 @@ footer::before {
 #teamName {
     width: 100%;
     box-sizing: border-box;
+} 
+
+@keyframes glitchText {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px var(--primary-color),
+            0 0 20px var(--primary-color),
+            0 0 30px var(--primary-color);
+        transform: translateX(0);
+    }
+    5%, 15% {
+        text-shadow: 
+            2px 0 var(--secondary-color),
+            -2px 0 var(--primary-color),
+            0 0 20px var(--primary-color);
+        transform: translateX(-1px);
+    }
+    10%, 20% {
+        text-shadow: 
+            -2px 0 var(--secondary-color),
+            2px 0 var(--primary-color),
+            0 0 20px var(--primary-color);
+        transform: translateX(1px);
+    }
 } 
