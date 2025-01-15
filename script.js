@@ -1,12 +1,6 @@
-// Calculate target date from the specified duration
-const now = new Date();
-const targetDate = new Date(now.getTime() + 
-    (3 * 24 * 60 * 60 * 1000) +    // 3 days
-    (3 * 60 * 60 * 1000) +         // 3 hours
-    (42 * 60 * 1000) +             // 42 minutes
-    (50 * 1000)                     // 50 seconds
-);
-const eventDate = targetDate.getTime();
+// Set fixed target date (3 days, 8 hours, 14 mins from Jan 15, 2025 3:45 PM)
+const targetDate = new Date('2025-01-19T00:00:00').getTime();  // Jan 19, 2025 12:00 AM
+const eventDate = targetDate;
 let timer;
 
 function animateValue(element, start, end, duration) {
@@ -45,31 +39,21 @@ function updateCountdown() {
     const now = new Date().getTime();
     const distance = eventDate - now;
 
-    
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    
-    const currentDays = parseInt(document.getElementById('days').textContent) || 0;
-    const currentHours = parseInt(document.getElementById('hours').textContent) || 0;
-    const currentMinutes = parseInt(document.getElementById('minutes').textContent) || 0;
-    const currentSeconds = parseInt(document.getElementById('seconds').textContent) || 0;
+    // Update DOM elements
+    const daysElement = document.getElementById('days');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
 
-    
-    if (currentDays !== days) {
-        animateValue(document.getElementById('days'), currentDays, days, 500);
-    }
-    if (currentHours !== hours) {
-        animateValue(document.getElementById('hours'), currentHours, hours, 500);
-    }
-    if (currentMinutes !== minutes) {
-        animateValue(document.getElementById('minutes'), currentMinutes, minutes, 500);
-    }
-    if (currentSeconds !== seconds) {
-        animateValue(document.getElementById('seconds'), currentSeconds, seconds, 500);
-    }
+    if (daysElement) daysElement.textContent = String(days).padStart(2, '0');
+    if (hoursElement) hoursElement.textContent = String(hours).padStart(2, '0');
+    if (minutesElement) minutesElement.textContent = String(minutes).padStart(2, '0');
+    if (secondsElement) secondsElement.textContent = String(seconds).padStart(2, '0');
 
     if (distance < 0) {
         clearInterval(timer);
