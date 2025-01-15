@@ -85,8 +85,9 @@ function createParticleEffect() {
     let particles = [];
     let mouseX = 0;
     let mouseY = 0;
+    let lastMouseX = 0;
+    let lastMouseY = 0;
 
-    // Resize canvas
     function resize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -94,22 +95,30 @@ function createParticleEffect() {
     resize();
     window.addEventListener('resize', resize);
 
-    // Track mouse movement
     window.addEventListener('mousemove', (e) => {
+        const moveX = Math.abs(e.clientX - lastMouseX);
+        const moveY = Math.abs(e.clientY - lastMouseY);
+        const movement = Math.sqrt(moveX * moveX + moveY * moveY);
+
         mouseX = e.clientX;
         mouseY = e.clientY;
-        // Create particles on mouse move
-        for(let i = 0; i < 2; i++) {
+
+        // Create 1-3 particles based on movement speed
+        const particleCount = movement > 25 ? 3 : movement > 10 ? 2 : 1;
+        for(let i = 0; i < particleCount; i++) {
             particles.push(createParticle(mouseX, mouseY));
         }
+
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
     });
 
     function createParticle(x, y) {
         return {
             x: x,
             y: y,
-            vx: (Math.random() - 0.5) * 2,
-            vy: (Math.random() - 0.5) * 2,
+            vx: (Math.random() - 0.5) * 2.5,  // Slightly increased velocity
+            vy: (Math.random() - 0.5) * 2.5,  // Slightly increased velocity
             life: 1,
             color: Math.random() > 0.5 ? '#0ff' : '#f0f'
         };
@@ -123,7 +132,7 @@ function createParticleEffect() {
         particles.forEach(p => {
             p.x += p.vx;
             p.y += p.vy;
-            p.life -= 0.01;
+            p.life -= 0.012;  // Slightly slower fade
             
             ctx.beginPath();
             ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
@@ -131,18 +140,17 @@ function createParticleEffect() {
             ctx.globalAlpha = p.life;
             ctx.fill();
             
-            // Add connecting lines between nearby particles
             particles.forEach(p2 => {
                 const dx = p.x - p2.x;
                 const dy = p.y - p2.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 
-                if(dist < 100) {
+                if(dist < 90) {  // Increased connection distance
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
                     ctx.strokeStyle = p.color;
-                    ctx.globalAlpha = (100 - dist) / 100 * p.life * 0.5;
+                    ctx.globalAlpha = (90 - dist) / 90 * p.life * 0.45;  // Slightly increased opacity
                     ctx.stroke();
                 }
             });
