@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const statusElement = document.createElement('p');
     statusElement.className = 'event-status';
-    statusElement.textContent = 'Event starts on January 19th, 2025 at 9:00 AM';
+    statusElement.textContent = 'Event starts on January 19th, 2025 at 10:00 AM';
     const countdown = document.getElementById('countdown');
     countdown.parentNode.insertBefore(statusElement, countdown);
 
