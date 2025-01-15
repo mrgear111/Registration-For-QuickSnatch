@@ -1,6 +1,11 @@
-// Calculate a date that's 4 days, 5 hours, and 3 minutes from now
+// Calculate target date from the specified duration
 const now = new Date();
-const targetDate = new Date(now.getTime() + (4 * 24 * 60 * 60 * 1000) + (5 * 60 * 60 * 1000) + (3 * 60 * 1000));
+const targetDate = new Date(now.getTime() + 
+    (3 * 24 * 60 * 60 * 1000) +    // 3 days
+    (3 * 60 * 60 * 1000) +         // 3 hours
+    (42 * 60 * 1000) +             // 42 minutes
+    (50 * 1000)                     // 50 seconds
+);
 const eventDate = targetDate.getTime();
 let timer;
 
