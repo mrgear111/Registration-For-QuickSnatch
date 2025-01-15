@@ -44,16 +44,23 @@ function updateCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Update DOM elements
-    const daysElement = document.getElementById('days');
-    const hoursElement = document.getElementById('hours');
-    const minutesElement = document.getElementById('minutes');
-    const secondsElement = document.getElementById('seconds');
+    const currentDays = parseInt(document.getElementById('days').textContent) || 0;
+    const currentHours = parseInt(document.getElementById('hours').textContent) || 0;
+    const currentMinutes = parseInt(document.getElementById('minutes').textContent) || 0;
+    const currentSeconds = parseInt(document.getElementById('seconds').textContent) || 0;
 
-    if (daysElement) daysElement.textContent = String(days).padStart(2, '0');
-    if (hoursElement) hoursElement.textContent = String(hours).padStart(2, '0');
-    if (minutesElement) minutesElement.textContent = String(minutes).padStart(2, '0');
-    if (secondsElement) secondsElement.textContent = String(seconds).padStart(2, '0');
+    if (currentDays !== days) {
+        animateValue(document.getElementById('days'), currentDays, days, 500);
+    }
+    if (currentHours !== hours) {
+        animateValue(document.getElementById('hours'), currentHours, hours, 500);
+    }
+    if (currentMinutes !== minutes) {
+        animateValue(document.getElementById('minutes'), currentMinutes, minutes, 500);
+    }
+    if (currentSeconds !== seconds) {
+        animateValue(document.getElementById('seconds'), currentSeconds, seconds, 500);
+    }
 
     if (distance < 0) {
         clearInterval(timer);
