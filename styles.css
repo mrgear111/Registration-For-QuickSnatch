@@ -1328,3 +1328,149 @@ main {
         letter-spacing: 1px;
     }
 } 
+
+/* Update mobile styles for countdown and hero section */
+@media (max-width: 768px) {
+    .hero {
+        padding: 1rem;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .container {
+        gap: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        letter-spacing: 5px;
+    }
+
+    .tagline {
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
+
+    .countdown {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+        padding: 1.5rem;
+        margin: 0;
+        width: 100%;
+        max-width: 300px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        border: 1px solid rgba(0, 255, 255, 0.1);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+
+    .countdown div {
+        min-width: auto;
+        width: 100%;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid var(--primary-color);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+
+    .countdown span {
+        font-size: 2.2rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 0.3rem;
+        display: block;
+    }
+
+    .countdown label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0.8;
+    }
+
+    .event-status {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        padding: 0.5rem;
+        text-align: center;
+        margin: 0.5rem 0;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 0, 0.1);
+        box-shadow: 0 0 15px rgba(255, 255, 0, 0.1);
+    }
+
+    .club-brand {
+        margin-bottom: 1rem;
+    }
+
+    .club-name {
+        font-size: 1.5rem;
+    }
+
+    .club-subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .countdown {
+        max-width: 280px;
+        gap: 0.6rem;
+        padding: 1rem;
+    }
+
+    .countdown div {
+        padding: 0.8rem;
+    }
+
+    .countdown span {
+        font-size: 2rem;
+    }
+
+    .countdown label {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        letter-spacing: 3px;
+    }
+
+    .event-status {
+        font-size: 1rem;
+    }
+}
+
+/* Add these new animations for mobile */
+@media (max-width: 768px) {
+    .countdown div {
+        animation: pulseGlow 2s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+        from {
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+        }
+        to {
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+    }
+
+    .countdown span {
+        animation: numberPulse 2s infinite alternate;
+    }
+
+    @keyframes numberPulse {
+        from {
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+        to {
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+    }
+} 
