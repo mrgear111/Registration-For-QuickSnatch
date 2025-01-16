@@ -415,11 +415,10 @@ main {
     background: linear-gradient(145deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 255, 0.05));
     border-radius: 20px;
     border: 1px solid rgba(0, 255, 255, 0.1);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1),
-                inset 0 0 30px rgba(0, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .registration-form::before {
@@ -1723,4 +1722,91 @@ section {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+} 
+
+/* Update registration form styles */
+.registration-form {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding: 3rem;
+    background: linear-gradient(145deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 255, 0.05));
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Mobile styles for forms */
+@media (max-width: 768px) {
+    .registration-form {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+        width: auto;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+        font-size: 1rem;
+    }
+
+    .form-group input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.8rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--primary-color);
+        border-radius: 8px;
+        color: var(--text-color);
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .team-members {
+        padding: 1rem;
+        margin: 1rem 0;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .team-members h3 {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1rem;
+        box-sizing: border-box;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 380px) {
+    .registration-form {
+        padding: 1rem;
+        margin: 1rem 0.5rem;
+    }
+
+    .form-group input {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .team-members {
+        padding: 0.8rem;
+    }
 } 
