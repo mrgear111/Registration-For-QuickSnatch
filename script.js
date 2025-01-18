@@ -1,5 +1,5 @@
 // Set fixed target date (3 days, 8 hours, 14 mins from Jan 15, 2025 3:45 PM)
-const targetDate = new Date('2025-01-19T00:00:00').getTime();  // Jan 19, 2025 12:00 AM
+const targetDate = new Date('2025-01-19T10:00:00').getTime();  // Jan 19, 2025 12:00 AM
 const eventDate = targetDate;
 let timer;
 
