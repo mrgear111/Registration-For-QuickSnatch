@@ -2073,3 +2073,92 @@ section {
         font-size: 1rem;
     }
 }
+
+.team-photo {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 1.5rem auto;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.team-photo .photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 255, 255, 0.2),
+        rgba(255, 0, 255, 0.2)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.winner-card:hover .team-photo img {
+    transform: scale(1.1);
+}
+
+.winner-card:hover .team-photo .photo-overlay {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .team-photo {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Specific styles for each place's photo border */
+.first-place .team-photo {
+    border-color: var(--accent-color); /* Gold */
+    box-shadow: 0 0 25px rgba(255, 255, 0, 0.3);
+}
+
+.second-place .team-photo {
+    border-color: #C0C0C0; /* Silver */
+    box-shadow: 0 0 20px rgba(192, 192, 192, 0.3);
+}
+
+.third-place .team-photo {
+    border-color: #CD7F32; /* Bronze */
+    box-shadow: 0 0 20px rgba(205, 127, 50, 0.3);
+}
+
+/* Custom overlay colors for each place */
+.first-place .photo-overlay {
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 0, 0.2),
+        rgba(255, 215, 0, 0.2)
+    );
+}
+
+.second-place .photo-overlay {
+    background: linear-gradient(
+        45deg,
+        rgba(192, 192, 192, 0.2),
+        rgba(169, 169, 169, 0.2)
+    );
+}
+
+.third-place .photo-overlay {
+    background: linear-gradient(
+        45deg,
+        rgba(205, 127, 50, 0.2),
+        rgba(184, 115, 51, 0.2)
+    );
+}
