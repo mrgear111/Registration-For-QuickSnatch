@@ -2162,3 +2162,61 @@ section {
         rgba(184, 115, 51, 0.2)
     );
 }
+
+.group-photo-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(145deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 255, 0.05));
+}
+
+.group-photo-container {
+    position: relative;
+    max-width: 1100px;
+    width: 90%;
+    margin: 2rem auto;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+.group-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.group-photo-container:hover .group-photo {
+    transform: scale(1.02);
+}
+
+.group-photo-container .photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 255, 255, 0.1),
+        rgba(255, 0, 255, 0.1)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.group-photo-container:hover .photo-overlay {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .group-photo-section {
+        padding: 2rem 1rem;
+    }
+    
+    .group-photo-container {
+        width: 95%;
+        margin: 1.5rem auto;
+    }
+}
